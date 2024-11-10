@@ -28,4 +28,14 @@ public sealed class WhiteCVars
         CVarDef.Create("white.log_in_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     #endregion
+
+    #region Medical
+
+    /// <summary>
+    /// How many times per second do we want to heal wounds.
+    /// </summary>
+    public static readonly CVarDef<float> MedicalHealingTickrate =
+        CVarDef.Create("medical.heal_tickrate", 0.5f, CVar.SERVER | CVar.REPLICATED);
+
+    #endregion
 }

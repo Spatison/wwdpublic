@@ -4,6 +4,7 @@ namespace Content.Shared._White.TargetDoll;
 
 public enum BodyPart
 {
+    Other,
     Head,
     Chest,
     Groin,
@@ -17,6 +18,7 @@ public enum BodyPart
     RightFoot,
     Eyes,
     Mouth,
+    Tail,
 }
 
 [Serializable, NetSerializable]

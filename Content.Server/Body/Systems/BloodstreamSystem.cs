@@ -1,3 +1,4 @@
+using Content.Server._White.Medical.Bloodstream.Components;
 using Content.Server._White.Other.BloodLust;
 using Content.Server.Body.Components;
 using Content.Server.Body.Events;
@@ -6,7 +7,10 @@ using Content.Server.Chemistry.ReactionEffects;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.Popups;
+using Content.Shared._White.Medical.Wounds;
+using Content.Shared._White.Medical.Wounds.Components;
 using Content.Shared.Alert;
+using Content.Shared.Body.Part;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
@@ -26,6 +30,7 @@ using Robust.Server.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using BloodstreamComponent = Content.Server.Body.Components.BloodstreamComponent;
 
 namespace Content.Server.Body.Systems;
 
@@ -62,7 +67,24 @@ public sealed class BloodstreamSystem : EntitySystem
         SubscribeLocalEvent<BloodstreamComponent, ReactionAttemptEvent>(OnReactionAttempt);
         SubscribeLocalEvent<BloodstreamComponent, SolutionRelayEvent<ReactionAttemptEvent>>(OnReactionAttempt);
         SubscribeLocalEvent<BloodstreamComponent, RejuvenateEvent>(OnRejuvenate);
+
+        SubscribeLocalEvent<BleedInflicterComponent, WoundAddedEvent>(OnWoundAdded); // WD EDIT
+        SubscribeLocalEvent<BleedInflicterComponent, WoundSeverityPointChangedEvent>(OnWoundSeverityUpdate); // WD EDIT
     }
+
+    // WD EDIT START
+    #region Data
+
+    private readonly Dictionary<WoundSeverity, FixedPoint2> _severityPoints = new()
+    {
+        { WoundSeverity.Minor, 0.02 },
+        { WoundSeverity.Moderate, 0.06 },
+        { WoundSeverity.Severe, 0.08 },
+        { WoundSeverity.Critical, 0.10 }
+    };
+
+    #endregion
+    // WD EDIT END
 
     private void OnMapInit(Entity<BloodstreamComponent> ent, ref MapInitEvent args)
     {
@@ -537,4 +559,51 @@ public sealed class BloodstreamSystem : EntitySystem
 
         return TryModifyBloodLevel(ent, ev.Amount, ent.Comp);
     }
+
+    // WD EDIT START
+    private void OnWoundAdded(EntityUid uid, BleedInflicterComponent component, ref WoundAddedEvent args)
+    {
+        if (!TryComp<WoundComponent>(args.WoundEntity, out var woundComponent))
+            return;
+
+        if (!woundComponent.CanBleed)
+            return;
+
+        component.IsBleeding = true;
+    }
+
+    private void OnWoundSeverityUpdate(EntityUid uid, BleedInflicterComponent component, ref WoundSeverityPointChangedEvent args)
+    {
+        if (!TryComp<WoundComponent>(args.Wound, out var woundComponent))
+            return;
+
+        if (!woundComponent.CanBleed && !component.IsBleeding)
+            return;
+
+        if (!TryComp<BodyPartComponent>(args.WoundComponent.Parent, out var bodyPart)
+            || bodyPart.Body == null
+            || !TryComp<BloodstreamComponent>(bodyPart.Body.Value, out var bloodstream))
+        {
+            return;
+        }
+
+        var point = GetBleedPoint(woundComponent.WoundSeverity);
+
+        var severityDelta = args.OldSeverity - args.NewSeverity;
+        var bleedDelta = severityDelta * point;
+
+        if (severityDelta <= 0 || bleedDelta <= 0 || _mobStateSystem.IsDead(bodyPart.Body.Value))
+        {
+            component.IsBleeding = false;
+            return;
+        }
+
+        TryModifyBleedAmount(bodyPart.Body.Value, (float) bleedDelta, bloodstream);
+    }
+
+    private FixedPoint2 GetBleedPoint(WoundSeverity woundSeverity)
+    {
+        return _severityPoints.TryGetValue(woundSeverity, out var point) ? point : 0;
+    }
+    // WD EDIT END
 }
