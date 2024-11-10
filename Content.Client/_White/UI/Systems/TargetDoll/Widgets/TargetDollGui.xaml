@@ -1,0 +1,216 @@
+<widgets1:TargetDollGui
+    xmlns="https://spacestation14.io"
+    xmlns:widgets1="clr-namespace:Content.Client._White.UI.Systems.TargetDoll.Widgets"
+    Name="TargetDollInterface"
+    VerticalExpand="True"
+    VerticalAlignment="Bottom"
+    HorizontalAlignment="Right">
+    <Control HorizontalAlignment="Right">
+        <TextureRect
+            Name="TargetDoll"
+            TexturePath="target_doll"
+            Stretch="KeepAspectCentered"
+            SetSize="128 128">
+            <PanelContainer
+                SetSize="76 128"
+                Margin="24 0 0 0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left">
+                <PanelContainer
+                    SetSize="24 52"
+                    Margin="0 9 0 0"
+                    HorizontalAlignment="Left">
+                    <TextureButton
+                        Name="RightArmButton"
+                        MinSize="24 40"
+                        StyleClasses="TargetDollButtonRightArm"
+                        VerticalAlignment="Top">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/r_arm.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="16 32"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </TextureButton>
+                    <TextureButton
+                        Name="RightHandButton"
+                        MinSize="24 24"
+                        VerticalAlignment="Bottom"
+                        StyleClasses="TargetDollButtonRightHand">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/r_hand.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="16 16"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </TextureButton>
+                </PanelContainer>
+                <PanelContainer
+                    SetSize="68 120"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center">
+                    <TextureButton
+                        Name="HeadButton"
+                        MinSize="44 36"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        StyleClasses="TargetDollButtonHead">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/head.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="36 28"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                        <PanelContainer
+                            SetSize="20 20"
+                            Margin="0 8 0 0"
+                            HorizontalAlignment="Center">
+                            <TextureButton
+                                Name="EyesButton"
+                                MinSize="20 12"
+                                VerticalAlignment="Top"
+                                StyleClasses="TargetDollButtonEyes">
+                                <TextureRect
+                                    TexturePath="/Textures/_White/Interface/TargetDoll/eyes.png"
+                                    Stretch="KeepAspectCentered"
+                                    SetSize="20 12"/>
+                            </TextureButton>
+                            <TextureButton
+                                Name="MouthButton"
+                                SetSize="12 8"
+                                VerticalAlignment="Bottom"
+                                StyleClasses="TargetDollButtonMouth">
+                                <TextureRect
+                                    TexturePath="/Textures/_White/Interface/TargetDoll/mouth.png"
+                                    Stretch="KeepAspectCentered"
+                                    SetSize="12 8"/>
+                            </TextureButton>
+                        </PanelContainer>
+                    </TextureButton>
+                    <TextureButton
+                        Name="ChestButton"
+                        SetSize="44 48"
+                        Margin="0 28 0 0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        StyleClasses="TargetDollButtonChest">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/chest.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="36 40"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </TextureButton>
+                    <PanelContainer
+                        MinSize="60 56"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center">
+                        <TextureButton
+                            Name="GroinButton"
+                            MinSize="44 24"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            StyleClasses="TargetDollButtonGroin">
+                            <TextureRect
+                                TexturePath="/Textures/_White/Interface/TargetDoll/groin.png"
+                                Stretch="KeepAspectCentered"
+                                SetSize="36 16"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </TextureButton>
+                        <PanelContainer
+                            MinSize="32 48"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right">
+                            <TextureButton
+                                Name="LeftLegButton"
+                                MinSize="24 44"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                StyleClasses="TargetDollButtonLeftLeg">
+                                <TextureRect
+                                    TexturePath="/Textures/_White/Interface/TargetDoll/l_leg.png"
+                                    Stretch="KeepAspectCentered"
+                                    SetSize="16 36"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </TextureButton>
+                            <TextureButton
+                                Name="LeftFootButton"
+                                MinSize="32 16"
+                                VerticalAlignment="Bottom"
+                                StyleClasses="TargetDollButtonLeftFoot">
+                                    <TextureRect
+                                        TexturePath="/Textures/_White/Interface/TargetDoll/l_foot.png"
+                                        Stretch="KeepAspectCentered"
+                                        SetSize="24 12"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                            </TextureButton>
+                        </PanelContainer>
+                        <PanelContainer
+                            MinSize="32 48"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left">
+                            <TextureButton
+                                Name="RightLegButton"
+                                MinSize="24 44"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                StyleClasses="TargetDollButtonRightLeg">
+                                <TextureRect
+                                    TexturePath="/Textures/_White/Interface/TargetDoll/r_leg.png"
+                                    Stretch="KeepAspectCentered"
+                                    SetSize="16 36"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </TextureButton>
+                            <TextureButton
+                                Name="RightFootButton"
+                                MinSize="32 16"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                StyleClasses="TargetDollButtonRightFoot">
+                                <TextureRect
+                                    TexturePath="/Textures/_White/Interface/TargetDoll/r_foot.png"
+                                    Stretch="KeepAspectCentered"
+                                    SetSize="24 12"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </TextureButton>
+                        </PanelContainer>
+                    </PanelContainer>
+                </PanelContainer>
+                <PanelContainer
+                    SetSize="24 52"
+                    Margin="0 9 0 0"
+                    HorizontalAlignment="Right">
+                    <TextureButton
+                        Name="LeftArmButton"
+                        MinSize="24 40"
+                        StyleClasses="TargetDollButtonLeftArm"
+                        VerticalAlignment="Top">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/l_arm.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="16 32"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </TextureButton>
+                    <TextureButton
+                        Name="LeftHandButton"
+                        MinSize="24 24"
+                        VerticalAlignment="Bottom"
+                        StyleClasses="TargetDollButtonLeftHand">
+                        <TextureRect
+                            TexturePath="/Textures/_White/Interface/TargetDoll/l_hand.png"
+                            Stretch="KeepAspectCentered"
+                            SetSize="16 16"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </TextureButton>
+                </PanelContainer>
+            </PanelContainer>
+        </TextureRect>
+    </Control>
+</widgets1:TargetDollGui>
