@@ -247,3 +247,7 @@ DrinkBottleGoldschlager: DrinkBottleGildlager
 
 # 2024-11-10 WD EDIT
 VendingMachinePride: RandomVending
+
+# 2024-11-11 WD EDIT
+TorsoSkeleton: ChestSkeleton
+TorsoHuman: ChestHuman

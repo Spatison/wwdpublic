@@ -14,7 +14,7 @@
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
       color: "#e8b59b"
       sprite: Mobs/Species/Human/parts.rsi
-      state: torso_m
+      state: chest_m
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       sprite: Mobs/Species/arachne.rsi
       state: spider_body_front
