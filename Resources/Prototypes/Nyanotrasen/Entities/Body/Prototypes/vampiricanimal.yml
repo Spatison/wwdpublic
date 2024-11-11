@@ -1,17 +1,23 @@
+# WD EDIT
 - type: body
   id: VampiricAnimal
   name: "vampiric animal"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoAnimal
+    chest:
+      part: ChestAnimal
+      connections:
+      - groin
+      organs:
+        lungs: OrganAnimalLungs
+        heart: OrganAnimalHeart
+    groin:
+      part: GroinAnimal
       connections:
       - legs
       organs:
-        lungs: OrganAnimalLungs
         stomach: OrganVampiricStomach
         liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
         kidneys: OrganAnimalKidneys
     legs:
       part: LegsAnimal
@@ -23,17 +29,22 @@
 - type: body
   id: VampiricAnimalLarge
   name: "large vampiric animal"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoAnimal
+    chest:
+      part: ChestAnimal
+      connections:
+      - groin
+      organs:
+        lungs: OrganAnimalLungs
+        heart: OrganAnimalHeart
+    groin:
+      part: GroinAnimal
       connections:
       - legs
       organs:
-        lungs: OrganAnimalLungs
         stomach: OrganVampiricHumanoidStomach
         liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
         kidneys: OrganAnimalKidneys
     legs:
       part: LegsAnimal

@@ -1,18 +1,24 @@
-﻿- type: body
+﻿# WD EDIT
+- type: body
   id: Friendshaped
   name: "Friend-Shaped"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoAnimal
+    chest:
+      part: ChestAnimal
       connections:
+      - groin
       - hands
-      - legs
       organs:
         lungs: OrganAnimalLungs
+        heart: OrganAnimalHeart
+    groin:
+      part: GroinAnimal
+      connections:
+      - legs
+      organs:
         stomach: OrganFriendStomach
         liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
         kidneys: OrganAnimalKidneys
     hands:
       part: HandsAnimal

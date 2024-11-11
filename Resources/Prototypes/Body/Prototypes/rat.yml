@@ -1,17 +1,23 @@
-﻿- type: body
+﻿# WD EDIT
+- type: body
   id: Rat
   name: "animal"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoRat
+    chest:
+      part: ChestRat
+      connections:
+      - groin
+      organs:
+        lungs: OrganRatLungs
+        heart: OrganAnimalHeart
+    groin:
+      part: GroinRat
       connections:
       - legs
       organs:
-        lungs: OrganRatLungs
         stomach: OrganRatStomach
         liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
         kidneys: OrganAnimalKidneys
     legs:
       part: LegsAnimal

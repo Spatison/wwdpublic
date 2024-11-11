@@ -73,17 +73,18 @@
   - type: BodyPart
     partType: Foot
 
+# WD EDIT START
 - type: entity
-  id: TorsoAnimal
-  name: animal torso
+  id: ChestAnimal
+  name: animal chest
   parent: PartAnimal
   noSpawn: true
   components:
   - type: Sprite
     layers:
-    - state: torso_m
+    - state: chest_m
   - type: BodyPart
-    partType: Torso
+    partType: Chest
   - type: Damageable
     damageContainer: Biological
   - type: Extractable
@@ -93,4 +94,26 @@
         Quantity: 10
       - ReagentId: Blood
         Quantity: 20
+
+- type: entity
+  id: GroinAnimal
+  name: animal groin
+  parent: PartAnimal
+  noSpawn: true
+  components:
+  - type: Sprite
+    layers:
+    - state: groin_m
+  - type: BodyPart
+    partType: Groin
+  - type: Damageable
+    damageContainer: Biological
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: Blood
+        Quantity: 20
+# WD EDIT END
 
