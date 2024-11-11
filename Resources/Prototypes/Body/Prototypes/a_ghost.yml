@@ -4,7 +4,7 @@
   root: torso
   slots:
     torso:
-      part: TorsoHuman
+      part: ChestHuman # WD EDIT
       connections:
       - right_arm
       - left_arm

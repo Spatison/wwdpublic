@@ -32,7 +32,8 @@
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
     Hair: MobHumanoidMarkingMatchSkin
-    Chest: MobIPCTorso
+    Chest: MobIPCChest # WD EDIT
+    Groin: MobIPCGroin # WD EDIT
     LArm: MobIPCLArm
     RArm: MobIPCRArm
     LHand: MobIPCLHand
@@ -117,34 +118,65 @@
   - sprite: Mobs/Species/IPC/parts.rsi
     state: head_m
 
+# WD EDIT START
+# Chest
+
+- type: humanoidBaseSprite
+  id: MobIPCChest
+
+- type: humanoidBaseSprite
+  id: MobIPCChestMale
+
+- type: humanoidBaseSprite
+  id: MobIPCChestFemale
+
+- type: marking
+  id: MobIPCChestDefault
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: Mobs/Species/IPC/parts.rsi
+    state: chest_m
+
+- type: marking
+  id: MobIPCChestFemaleDefault
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: Mobs/Species/IPC/parts.rsi
+    state: chest_f
+
 # Torso
 
 - type: humanoidBaseSprite
-  id: MobIPCTorso
+  id: MobIPCGroin
 
 - type: humanoidBaseSprite
-  id: MobIPCTorsoMale
+  id: MobIPCGroinMale
 
 - type: humanoidBaseSprite
-  id: MobIPCTorsoFemale
+  id: MobIPCGroinFemale
 
 - type: marking
-  id: MobIPCTorsoDefault
-  bodyPart: Chest
+  id: MobIPCGroinDefault
+  bodyPart: Groin
   markingCategory: Chest
   speciesRestriction: [IPC]
   sprites:
   - sprite: Mobs/Species/IPC/parts.rsi
-    state: torso_m
+    state: groin_m
 
 - type: marking
-  id: MobIPCTorsoFemaleDefault
-  bodyPart: Chest
+  id: MobIPCGroinFemaleDefault
+  bodyPart: Groin
   markingCategory: Chest
   speciesRestriction: [IPC]
   sprites:
   - sprite: Mobs/Species/IPC/parts.rsi
-    state: torso_f
+    state: groin_f
+# WD EDIT END
 
 # Left Leg
 

@@ -26,19 +26,18 @@
       - ReagentId: Blood
         Quantity: 10
 
+# WD EDIT START
 - type: entity
-  id: TorsoVox
-  name: "vox torso"
-  parent: PartVox
+  id: ChestVox
+  name: "vox chest"
+  parent: [PartVox, BaseChest]
   components:
     - type: Sprite
       sprite: Mobs/Species/Vox/parts.rsi
-      state: "torso"
+      state: "chest"
     - type: Icon
       sprite: Mobs/Species/Vox/parts.rsi
-      state: "torso"
-    - type: BodyPart
-      partType: Torso
+      state: "chest"
     - type: Extractable
       juiceSolution:
         reagents:
@@ -46,6 +45,26 @@
           Quantity: 3
         - ReagentId: Blood
           Quantity: 10
+
+- type: entity
+  id: GroinVox
+  name: "vox groin"
+  parent: [PartVox, BaseGroin]
+  components:
+    - type: Sprite
+      sprite: Mobs/Species/Vox/parts.rsi
+      state: "groin"
+    - type: Icon
+      sprite: Mobs/Species/Vox/parts.rsi
+      state: "groin"
+    - type: Extractable
+      juiceSolution:
+        reagents:
+        - ReagentId: Fat
+          Quantity: 3
+        - ReagentId: Blood
+          Quantity: 10
+# WD EDIT END
 
 - type: entity
   id: HeadVox

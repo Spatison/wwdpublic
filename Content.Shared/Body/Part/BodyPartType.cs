@@ -10,7 +10,9 @@ namespace Content.Shared.Body.Part
     public enum BodyPartType
     {
         Other = 0,
-        Torso,
+        Torso, // TODO: remove it
+        Chest, // WD EDIT
+        Groin, // WD EDIT
         Head,
         Arm,
         Hand,

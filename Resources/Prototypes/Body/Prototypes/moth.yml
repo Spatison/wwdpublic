@@ -1,28 +1,34 @@
-﻿- type: body
+﻿# WD EDIT
+- type: body
   id: Moth
   name: "Moth"
-  root: torso
+  root: chest
   slots:
     head:
       part: HeadMoth
       connections:
-      - torso
+      - chest
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
-      part: TorsoMoth
+    chest:
+      part: ChestMoth
+      connections:
+      - groin
+      - right arm
+      - left arm
       organs:
         heart: OrganAnimalHeart
         lungs: OrganHumanLungs
+    groin:
+      part: GroinMoth
+      connections:
+      - right leg
+      - left leg
+      organs:
         stomach: OrganMothStomach
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
-      connections:
-      - right arm
-      - left arm
-      - right leg
-      - left leg
     right arm:
       part: RightArmMoth
       connections:

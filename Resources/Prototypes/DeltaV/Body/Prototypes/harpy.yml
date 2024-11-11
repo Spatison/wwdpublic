@@ -1,27 +1,33 @@
+# WD EDIT
 - type: body
   id: Harpy
   name: "harpy"
-  root: torso
+  root: chest
   slots:
     head:
       part: HeadHarpy
       connections:
-      - torso
+      - chest
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
-      part: TorsoHarpy
+    chest:
+      part: ChestHarpy
       connections:
+      - groin
       - right arm
       - left arm
-      - right leg
-      - left leg
       organs:
         heart: OrganHumanHeart
         lungs: OrganHarpyLungs
+    groin:
+      part: GroinHarpy
+      connections:
+      - right leg
+      - left leg
+      organs:
         stomach: OrganAnimalStomach
-        liver:  OrganAnimalLiver
+        liver: OrganAnimalLiver
         kidneys: OrganAnimalKidneys
     right arm:
       part: RightArmHarpy

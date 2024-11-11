@@ -17,20 +17,33 @@
     tags:
       - Trash
 
+# WD EDIT START
 - type: entity
-  id: TorsoHarpy
-  name: "harpy torso"
-  parent: PartHarpy
+  id: ChestHarpy
+  name: "harpy chest"
+  parent: [PartHarpy, BaseChest]
   components:
   - type: Sprite
     netsync: false
     sprite: Mobs/Species/Harpy/parts.rsi
-    state: "torso_m"
+    state: "chest_m"
   - type: Icon
     sprite: Mobs/Species/Harpy/parts.rsi
-    state: "torso_m"
-  - type: BodyPart
-    partType: Torso
+    state: "chest_m"
+
+- type: entity
+  id: GroinHarpy
+  name: "harpy groin"
+  parent: [PartHarpy, BaseGroin]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Mobs/Species/Harpy/parts.rsi
+    state: "groin_m"
+  - type: Icon
+    sprite: Mobs/Species/Harpy/parts.rsi
+    state: "groin_m"
+# WD EDIT END
 
 - type: entity
   id: HeadHarpy
