@@ -7891,3 +7891,64 @@ Entries:
   id: 6482
   time: '2024-11-01T11:47:36.0000000+00:00'
   url: https://github.com/WWhiteDreamProject/wwdpublic/pull/115
+- author: Gersoon458
+  changes:
+    - type: Remove
+      message: >-
+        Fun removed :( Specifically the basket and the gift from the hands
+        :(/Удалено веселье :( А конкретно корзинка и подарок из рук :( 
+  id: 6483
+  time: '2024-11-06T02:52:23.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/119
+- author: Spatison
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the chances of modes falling out / Изменены шансы выпадения
+        режимов
+  id: 6484
+  time: '2024-11-06T03:10:55.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/118
+- author: Gersoon458
+  changes:
+    - type: Add
+      message: Added a new map - WhiteBox/Добавлена новая карта - ВайтБокс
+    - type: Fix
+      message: Fixed Moose (Added cadet spawner)/Починен Мус (Добавлен спавнер кадета)
+    - type: Fix
+      message: >-
+        Asterisk has been fixed, now there is no planet on it (Which do not
+        work. Thanks to Kutos)/Починен Астериск, теперь на нём нет планеты
+        (Которые не работают. Спасибо Кутосу)
+  id: 6485
+  time: '2024-11-06T03:45:51.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/117
+- author: Spatison
+  changes:
+    - type: Tweak
+      message: The pickaxe has been improved / Улучшена кирка
+  id: 6486
+  time: '2024-11-06T03:46:19.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/108
+- author: Spatison
+  changes:
+    - type: Tweak
+      message: >-
+        The holoprojectors have been redesigned / Голопроекторы были
+        переработаны
+  id: 6487
+  time: '2024-11-06T03:48:03.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/112
+- author: Warete
+  changes:
+    - type: Fix
+      message: >-
+        Some benches had to get their rotation back / Скамьи должны были вернуть
+        свой поворот
+    - type: Tweak
+      message: >-
+        Automatic shift end is now off / Выключено автоматическое завершение
+        смены
+  id: 6488
+  time: '2024-11-06T04:32:07.0000000+00:00'
+  url: https://github.com/WWhiteDreamProject/wwdpublic/pull/99
