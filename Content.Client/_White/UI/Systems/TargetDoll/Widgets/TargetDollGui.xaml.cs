@@ -62,5 +62,10 @@ public sealed partial class TargetDollGui : UIWidget
     {
         Visible = visible;
     }
+
+    protected override void OnThemeUpdated()
+    {
+        TargetDoll.Texture = Theme.ResolveTexture("target_doll");
+    }
 }
 
