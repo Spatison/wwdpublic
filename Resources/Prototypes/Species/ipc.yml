@@ -53,7 +53,13 @@
     Chest:
       points: 1
       required: true
-      defaultMarkings: [ MobIPCTorsoDefault ]
+      defaultMarkings: [ MobIPChestDefault ] # WD EDIT
+   # WD EDIT START
+    Groin:
+      points: 1
+      required: true
+      defaultMarkings: [ MobIPCGroinDefault ]
+    # WD EDIT END
     HeadSide:
       points: 1
       required: false
@@ -148,7 +154,7 @@
   - sprite: Mobs/Species/IPC/parts.rsi
     state: chest_f
 
-# Torso
+# Groin
 
 - type: humanoidBaseSprite
   id: MobIPCGroin
@@ -162,7 +168,7 @@
 - type: marking
   id: MobIPCGroinDefault
   bodyPart: Groin
-  markingCategory: Chest
+  markingCategory: Groin
   speciesRestriction: [IPC]
   sprites:
   - sprite: Mobs/Species/IPC/parts.rsi
@@ -171,7 +177,7 @@
 - type: marking
   id: MobIPCGroinFemaleDefault
   bodyPart: Groin
-  markingCategory: Chest
+  markingCategory: Groin
   speciesRestriction: [IPC]
   sprites:
   - sprite: Mobs/Species/IPC/parts.rsi
