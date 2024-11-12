@@ -53,7 +53,7 @@
     Chest:
       points: 1
       required: true
-      defaultMarkings: [ MobIPChestDefault ] # WD EDIT
+      defaultMarkings: [ MobIPCChestDefault ] # WD EDIT
    # WD EDIT START
     Groin:
       points: 1
