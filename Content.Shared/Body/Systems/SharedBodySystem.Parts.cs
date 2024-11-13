@@ -162,7 +162,6 @@ public partial class SharedBodySystem
 
             if (!bodyEnt.Comp.LegEntities.Any())
             {
-                Log.Error("!!!!!4r142314");
                 Standing.Down(bodyEnt);
             }
         }
