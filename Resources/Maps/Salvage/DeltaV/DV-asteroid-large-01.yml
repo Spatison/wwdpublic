@@ -4025,7 +4025,7 @@ entities:
     - type: Transform
       pos: -4.5,3.5
       parent: 1
-- proto: TorsoHuman
+- proto: ChestHuman
   entities:
   - uid: 532
     components:

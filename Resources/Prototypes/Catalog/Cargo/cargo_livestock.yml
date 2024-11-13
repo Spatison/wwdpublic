@@ -64,7 +64,7 @@
     sprite: Mobs/Pets/pitbull.rsi
     state: pibble
   product: CrateNPCPibble
-  cost: 700
+  cost: 800 # WD EDIT
   category: Livestock
   group: market
 
