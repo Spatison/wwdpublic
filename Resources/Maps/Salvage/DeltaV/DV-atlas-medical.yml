@@ -3473,7 +3473,7 @@ entities:
     - type: Transform
       pos: 1.5,-2.5
       parent: 549
-- proto: ChestHuman
+- proto: TorsoHuman
   entities:
   - uid: 147
     components:

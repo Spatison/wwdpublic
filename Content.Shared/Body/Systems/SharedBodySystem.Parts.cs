@@ -150,7 +150,8 @@ public partial class SharedBodySystem
 
     private void RemoveLeg(Entity<BodyPartComponent> legEnt, Entity<BodyComponent?> bodyEnt)
     {
-        if (!Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false))
+        if (!Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false)
+            || TerminatingOrDeleted(bodyEnt)) // WD EDIT
             return;
 
         if (legEnt.Comp.PartType == BodyPartType.Leg)
@@ -161,6 +162,7 @@ public partial class SharedBodySystem
 
             if (!bodyEnt.Comp.LegEntities.Any())
             {
+                Log.Error("!!!!!4r142314");
                 Standing.Down(bodyEnt);
             }
         }
