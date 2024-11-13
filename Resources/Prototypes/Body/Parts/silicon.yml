@@ -102,7 +102,7 @@
   abstract: true
   components:
   - type: BodyPart
-    partType: Torso
+    partType: Chest
   - type: Tag
     tags:
     - Trash

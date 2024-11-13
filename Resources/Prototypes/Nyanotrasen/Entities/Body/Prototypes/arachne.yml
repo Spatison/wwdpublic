@@ -1,27 +1,25 @@
+# WD EDIT
 - type: body
   id: Arachne
   name: "arachne"
-  root: torso
+  root: chest
   slots:
     head:
       part: HeadHuman
       connections:
-      - torso
+      - chest
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
-      part: TorsoHuman
+    chest:
+      part: ChestHuman
       connections:
+      - thorax
       - left arm
       - right arm
-      - thorax
       organs:
         heart: OrganHumanHeart
         lungs: OrganHumanLungs
-        stomach: OrganVampiricHumanoidStomach
-        liver:  OrganHumanLiver
-        kidneys: OrganHumanKidneys
     right arm:
       part: RightArmHuman
       connections:
@@ -45,6 +43,10 @@
         - right second leg
         - right third leg
         - right hind leg
+      organs:
+        stomach: OrganVampiricHumanoidStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
     left foreleg:
       part: LeftLegSpider
     left second leg:

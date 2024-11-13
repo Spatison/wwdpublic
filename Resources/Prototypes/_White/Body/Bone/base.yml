@@ -1,0 +1,6 @@
+- type: entity
+  id: Bone
+  name: bone
+  parent: BaseItem
+  components:
+  - type: Bone

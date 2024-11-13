@@ -20,6 +20,7 @@
     tags:
       - Trash
 
+# TODO: Remove it
 - type: entity
   id: BaseTorso
   name: "torso"
@@ -28,6 +29,26 @@
   components:
   - type: BodyPart
     partType: Torso
+
+# WD EDIT START
+- type: entity
+  id: BaseChest
+  name: "сhest"
+  parent: BasePart
+  abstract: true
+  components:
+  - type: BodyPart
+    partType: Chest
+
+- type: entity
+  id: BaseGroin
+  name: "groin"
+  parent: BasePart
+  abstract: true
+  components:
+  - type: BodyPart
+    partType: Groin
+# WD EDIT END
 
 - type: entity
   id: BaseHead

@@ -1,18 +1,24 @@
-﻿- type: body
+﻿# WD EDIT
+- type: body
   id: Primate
   name: "primate"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoAnimal
+    chest:
+      part: ChestAnimal
       connections:
+      - groin
       - hands
-      - legs
       organs:
         lungs: OrganAnimalLungs
+        heart: OrganAnimalHeart
+    groin:
+      part: GroinAnimal
+      connections:
+      - legs
+      organs:
         stomach: OrganAnimalStomach
         liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
         kidneys: OrganAnimalKidneys
     hands:
       part: HandsAnimal

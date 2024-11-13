@@ -10,6 +10,7 @@ namespace Content.Shared.Humanoid
         Hair,
         FacialHair,
         Chest,
+        Groin, // WD EDIT
         Head,
         Snout,
         HeadSide, // side parts (i.e., frills)

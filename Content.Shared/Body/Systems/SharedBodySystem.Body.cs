@@ -68,6 +68,12 @@ public partial class SharedBodySystem
 
     private void OnBodyRemoved(Entity<BodyComponent> ent, ref EntRemovedFromContainerMessage args)
     {
+        // WD EDIT START
+        // TODO: lifestage shenanigans
+        if (TerminatingOrDeleted(ent.Owner))
+            return;
+        // WD EDIT END
+
         // Root body part?
         var slotId = args.Container.ID;
 

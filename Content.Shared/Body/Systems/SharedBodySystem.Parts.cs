@@ -133,7 +133,6 @@ public partial class SharedBodySystem
         RaiseLocalEvent(bodyEnt, ref ev);
 
         RemoveLeg(partEnt, bodyEnt);
-        PartRemoveDamage(bodyEnt, partEnt);
     }
 
     private void AddLeg(Entity<BodyPartComponent> legEnt, Entity<BodyComponent?> bodyEnt)
@@ -151,7 +150,8 @@ public partial class SharedBodySystem
 
     private void RemoveLeg(Entity<BodyPartComponent> legEnt, Entity<BodyComponent?> bodyEnt)
     {
-        if (!Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false))
+        if (!Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false)
+            || TerminatingOrDeleted(bodyEnt)) // WD EDIT
             return;
 
         if (legEnt.Comp.PartType == BodyPartType.Leg)
@@ -164,22 +164,6 @@ public partial class SharedBodySystem
             {
                 Standing.Down(bodyEnt);
             }
-        }
-    }
-
-    private void PartRemoveDamage(Entity<BodyComponent?> bodyEnt, Entity<BodyPartComponent> partEnt)
-    {
-        if (!Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false))
-            return;
-
-        if (!_timing.ApplyingState
-            && partEnt.Comp.IsVital
-            && !GetBodyChildrenOfType(bodyEnt, partEnt.Comp.PartType, bodyEnt.Comp).Any()
-        )
-        {
-            // TODO BODY SYSTEM KILL : remove this when wounding and required parts are implemented properly
-            var damage = new DamageSpecifier(Prototypes.Index<DamageTypePrototype>("Bloodloss"), 300);
-            Damageable.TryChangeDamage(bodyEnt, damage);
         }
     }
 
@@ -371,6 +355,7 @@ public partial class SharedBodySystem
             && CanAttachPart(parentId, slot.Id, partId, parentPart, part);
     }
 
+    // WD EDIT START
     /// <summary>
     /// Returns true if we can attach the specified partId to the parentId in the specified slot.
     /// </summary>
@@ -382,12 +367,46 @@ public partial class SharedBodySystem
         BodyPartComponent? part = null)
     {
         return Resolve(partId, ref part, logMissing: false)
-            && Resolve(parentId, ref parentPart, logMissing: false)
-            && parentPart.Children.TryGetValue(slotId, out var parentSlotData)
-            && part.PartType == parentSlotData.Type
-            && Containers.TryGetContainer(parentId, GetPartSlotContainerId(slotId), out var container)
-            && Containers.CanInsert(partId, container);
+               && Resolve(parentId, ref parentPart, logMissing: false)
+               && parentPart.Children.TryGetValue(slotId, out var parentSlotData)
+               && part.PartType == parentSlotData.Type
+               && Containers.TryGetContainer(parentId, GetPartSlotContainerId(slotId), out var container)
+               && Containers.CanInsert(partId, container);
     }
+
+    /// <summary>
+    /// Returns true if the partId can be detached from the parentId in the specified slot.
+    /// </summary>
+    public bool CanDetachPart(
+        EntityUid parentId,
+        BodyPartSlot slot,
+        EntityUid partId,
+        BodyPartComponent? parentPart = null,
+        BodyPartComponent? part = null)
+    {
+        return Resolve(partId, ref part, logMissing: false)
+               && Resolve(parentId, ref parentPart, logMissing: false)
+               && CanDetachPart(parentId, slot.Id, partId, parentPart, part);
+    }
+
+    /// <summary>
+    /// Returns true if we can detach the specified partId from the parentId in the specified slot.
+    /// </summary>
+    public bool CanDetachPart(
+        EntityUid parentId,
+        string slotId,
+        EntityUid partId,
+        BodyPartComponent? parentPart = null,
+        BodyPartComponent? part = null)
+    {
+        return Resolve(partId, ref part, logMissing: false)
+               && Resolve(parentId, ref parentPart, logMissing: false)
+               && parentPart.Children.TryGetValue(slotId, out var parentSlotData)
+               && part.PartType == parentSlotData.Type
+               && Containers.TryGetContainer(parentId, GetPartSlotContainerId(slotId), out var container)
+               && Containers.CanRemove(partId, container);
+    }
+    // WD EDIT END
 
     public bool AttachPartToRoot(
         EntityUid bodyId,
@@ -446,6 +465,47 @@ public partial class SharedBodySystem
 
         return Containers.Insert(partId, container);
     }
+
+    // WD EDIT START
+    /// <summary>
+    /// Detaches a body part from the specified body part parent.
+    /// </summary>
+    public bool DetachPart(
+        EntityUid parentPartId,
+        string slotId,
+        EntityUid partId,
+        BodyPartComponent? parentPart = null,
+        BodyPartComponent? part = null)
+    {
+        return Resolve(parentPartId, ref parentPart, logMissing: false)
+               && parentPart.Children.TryGetValue(slotId, out var slot)
+               && DetachPart(parentPartId, slot, partId, parentPart, part);
+    }
+
+    /// <summary>
+    /// Detaches a body part from the specified body part parent.
+    /// </summary>
+    public bool DetachPart(
+        EntityUid parentPartId,
+        BodyPartSlot slot,
+        EntityUid partId,
+        BodyPartComponent? parentPart = null,
+        BodyPartComponent? part = null)
+    {
+        if (!Resolve(parentPartId, ref parentPart, logMissing: false)
+            || !Resolve(partId, ref part, logMissing: false)
+            || !CanDetachPart(parentPartId, slot.Id, partId, parentPart, part)
+            || !parentPart.Children.ContainsKey(slot.Id))
+            return false;
+
+        if (Containers.TryGetContainer(parentPartId, GetPartSlotContainerId(slot.Id), out var container))
+            return Containers.Remove(partId, container);
+
+        DebugTools.Assert($"Unable to find body slot {slot.Id} for {ToPrettyString(parentPartId)}");
+        return false;
+
+    }
+    // WD EDIT END
 
     #endregion
 

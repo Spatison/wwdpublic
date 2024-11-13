@@ -254,3 +254,7 @@ HoloprojectorBorg: Holoprojector
 HolofanProjectorEmpty: HolofanProjector
 HoloprojectorFieldEmpty: HoloprojectorField
 HoloprojectorSecurityEmpty: HoloprojectorSecurity
+
+# 2024-11-11 WD EDIT
+TorsoSkeleton: ChestSkeleton
+TorsoHuman: ChestHuman

@@ -19,20 +19,33 @@
     tags:
       - Trash
 
+# WD EDIT START
 - type: entity
-  id: TorsoVulpkanin
-  name: "vulpkanin torso"
-  parent: PartVulpkanin
+  id: ChestVulpkanin
+  name: "vulpkanin chest"
+  parent: [PartVulpkanin, BaseChest]
   components:
   - type: Sprite
     netsync: false
     sprite: DeltaV/Mobs/Species/Vulpkanin/parts.rsi
-    state: "torso_m"
+    state: "chest_m"
   - type: Icon
     sprite: DeltaV/Mobs/Species/Vulpkanin/parts.rsi
-    state: "torso_m"
-  - type: BodyPart
-    partType: Torso
+    state: "chest_m"
+
+- type: entity
+  id: GroinVulpkanin
+  name: "vulpkanin groin"
+  parent: [PartVulpkanin, BaseGroin]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: DeltaV/Mobs/Species/Vulpkanin/parts.rsi
+    state: "groin_m"
+  - type: Icon
+    sprite: DeltaV/Mobs/Species/Vulpkanin/parts.rsi
+    state: "groin_m"
+# WD EDIT END
 
 - type: entity
   id: HeadVulpkanin

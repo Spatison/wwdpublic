@@ -14,20 +14,37 @@
   - type: StaticPrice
     price: 100
 
+# WD EDIT START
 - type: entity
-  id: TorsoIPC
-  name: "ipc torso"
+  id: ChestIPC
+  name: "ipc chest"
   parent: PartIPC
   components:
   - type: Sprite
     netsync: false
     sprite: Mobs/Species/IPC/parts.rsi
-    state: "torso_m"
+    state: "chest_m"
   - type: Icon
     sprite: Mobs/Species/IPC/parts.rsi
-    state: "torso_m"
+    state: "chest_m"
   - type: BodyPart
-    partType: Torso
+    partType: Chest
+
+- type: entity
+  id: GroinIPC
+  name: "ipc groin"
+  parent: PartIPC
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Mobs/Species/IPC/parts.rsi
+    state: "groin_m"
+  - type: Icon
+    sprite: Mobs/Species/IPC/parts.rsi
+    state: "groin_m"
+  - type: BodyPart
+    partType: Groin
+# WD EDIT END
 
 - type: entity
   id: HeadIPC
