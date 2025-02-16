@@ -1,3 +1,4 @@
+using Content.Shared._White;
 using Content.Shared.CCVar;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -13,11 +14,11 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Content.Client.AntiParkinsons;
+namespace Content.Client._White.AntiParkinsons;
 
 // The following code is slightly esoteric and higly schizophrenic. You have been warned.
 
-#pragma warning disable RA0002 // wraps both systems
+#pragma warning disable RA0002
 
 public sealed class AntiParkinsonsSystem : EntitySystem
 {
@@ -33,7 +34,7 @@ public sealed class AntiParkinsonsSystem : EntitySystem
     public override void Initialize()
     {
         UpdatesOutsidePrediction = true;
-        _cfg.OnValueChanged(CCVars.PixelSnapCamera, OnEnabledDisabled, true);
+        _cfg.OnValueChanged(WhiteCVars.PixelSnapCamera, OnEnabledDisabled, true);
         // eat sand
         foreach(Type sys in _refl.GetAllChildren<EntitySystem>())
         {
@@ -159,102 +160,4 @@ public sealed class AntiParkinsonsSystem : EntitySystem
     }
 }
 
-
-
-public sealed class AntiParkinsonsRevertSystem : EntitySystem
-{
-    [Dependency] private readonly IReflectionManager _refl = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-
-
-    public override void Initialize()
-    {
-        UpdatesOutsidePrediction = true;
-
-        // dnas tae
-        foreach (Type sys in _refl.GetAllChildren<EntitySystem>())
-        {
-            if (sys.IsAbstract || sys == typeof(AntiParkinsonsRevertSystem))
-                continue;
-
-            UpdatesBefore.Add(sys);
-        }
-    }
-
-    // dnas tae
-    public override void FrameUpdate(float frameTime)
-    {
-        var query = AllEntityQuery<PixelSnapEyeComponent>();
-
-        while (query.MoveNext(out var uid, out var ppComp))
-        {
-            if (!TryComp<EyeComponent>(uid, out var eyeComp) || eyeComp.Eye == null)
-                continue;
-
-            eyeComp.Eye.Position = PPCamHelper.CheckForChange(eyeComp.Eye.Position, ppComp.EyePositionModified, ppComp.EyePosition);
-            eyeComp.Eye.Offset = PPCamHelper.CheckForChange(eyeComp.Eye.Offset, ppComp.EyeOffsetModified, ppComp.EyeOffset);
-            eyeComp.Offset = eyeComp.Eye.Offset;
-
-            if(TryComp<SpriteComponent>(uid, out var sprite))
-                sprite.Offset = PPCamHelper.CheckForChange(sprite.Offset, ppComp.SpriteOffsetModified, ppComp.SpriteOffset);
-        }
-    }
-}
-
 #pragma warning restore RA0002
-
-
-[RegisterComponent]
-[UnsavedComponent]
-public sealed partial class PixelSnapEyeComponent : Component
-{
-    [ViewVariables(VVAccess.ReadWrite)]
-    public EntityUid LastParent;
-    [ViewVariables(VVAccess.ReadWrite)]
-    public System.Numerics.Vector2 SpriteOffset, SpriteOffsetModified;
-    [ViewVariables(VVAccess.ReadWrite)]
-    public MapCoordinates EyePosition, EyePositionModified;
-    [ViewVariables(VVAccess.ReadWrite)]
-    public System.Numerics.Vector2 EyeOffset, EyeOffsetModified;
-
-}
-
-public static class PPCamHelper
-{
-    private static int roundFactor => EyeManager.PixelsPerMeter;
-    public static Vector2 RoundXY(Vector2 vec) => new Vector2(MathF.Round(vec.X * roundFactor) / roundFactor, MathF.Round(vec.Y * roundFactor) / roundFactor);
-
-    /// <summary>
-    /// Translates world vector into local (to parent) vector, rounds it to a 1 over <see cref="EyeManager.PixelsPerMeter"/> and translates back to world space.
-    /// </summary>
-    /// <param name="worldPos"></param>
-    /// <param name="parentXform"></param>
-    /// <returns></returns>
-    public static Vector2 WorldPosPixelRoundToParent(Vector2 worldPos, EntityUid parent, SharedTransformSystem xformSystem)
-    {
-        var (_, _, mat, invmat) = xformSystem.GetWorldPositionRotationMatrixWithInv(parent);
-        Vector2 localSpacePos = Vector2.Transform(worldPos, invmat);
-        localSpacePos = RoundXY(localSpacePos);
-        Vector2 worldRoundedPos = Vector2.Transform(localSpacePos, mat);
-        return worldRoundedPos;
-    }
-
-    public static (Vector2 roundedWorldPos, Vector2 LocalSpaceDiff) WorldPosPixelRoundToParentWithDiff(Vector2 worldPos, EntityUid parent, SharedTransformSystem xformSystem)
-    {
-        var (_, _, mat, invmat) = xformSystem.GetWorldPositionRotationMatrixWithInv(parent);
-        Vector2 localSpacePos = Vector2.Transform(worldPos, invmat);
-        var roundedLocalSpacePos = RoundXY(localSpacePos);
-        Vector2 worldRoundedPos = Vector2.Transform(localSpacePos, mat);
-        return (worldRoundedPos, roundedLocalSpacePos - localSpacePos);
-    }
-
-    public static T CheckForChange<T>(T currentValue, T modifiedValue, T originalValue) where T : IEquatable<T>
-    {
-        // if this is false, this means that the value tracked was changed outside
-        // of the engine's FrameUpdate loop, and this change should be preserved.
-        if (currentValue.Equals(modifiedValue))
-            return originalValue;
-        return currentValue;
-    }
-}
