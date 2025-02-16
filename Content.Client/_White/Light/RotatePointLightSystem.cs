@@ -14,11 +14,11 @@ public sealed class RotatePointLightSystem : SharedRotatePointLightSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<RotatePointLightComponent, ComponentStartup>(CompInit);
+        SubscribeLocalEvent<RotatePointLightComponent, ComponentStartup>(CompStartup);
         SubscribeLocalEvent<RotatePointLightComponent, AfterAutoHandleStateEvent>(AfterAutoState);
     }
 
-    private void CompInit(EntityUid uid, RotatePointLightComponent comp, ComponentStartup args)
+    private void CompStartup(EntityUid uid, RotatePointLightComponent comp, ComponentStartup args)
     {
         UpdateRotation(uid, comp);
     }
