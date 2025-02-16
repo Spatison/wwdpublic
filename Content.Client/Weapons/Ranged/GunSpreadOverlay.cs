@@ -4,8 +4,6 @@ using Content.Client.Viewport;
 using Content.Client.Weapons.Ranged.Systems;
 using Content.Shared.Contests;
 using Content.Shared.Weapons.Ranged.Components;
-using MathNet.Numerics.RootFinding;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -157,8 +155,8 @@ public sealed class PartialGunSpreadOverlay : GunSpreadOverlay
     public PartialGunSpreadOverlay(IEntityManager entManager, IEyeManager eyeManager, IGameTiming timing, IInputManager input, IPlayerManager player, GunSystem system, SharedTransformSystem transform, ContestsSystem contest, SpriteSystem sprite) : base(entManager, eyeManager, timing, input, player, system, transform, contest)
     {
         _sprite = sprite;
-        _textureS = _sprite.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/gun-spread-marker-s.png")));
-        _textureL = _sprite.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/gun-spread-marker-l.png")));
+        _textureS = _sprite.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/_White/Interface/gun-spread-marker-s.png")));
+        _textureL = _sprite.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/_White/Interface/gun-spread-marker-l.png")));
     }
 
     protected override void Reset() { _lastGun = null; }
@@ -194,17 +192,6 @@ public sealed class PartialGunSpreadOverlay : GunSpreadOverlay
         Angle negRot = -_eye.CurrentEye.Rotation;
 
         handle.SetTransform(from, 0);
-
-        //handle.DrawRectCentered(dir1 * 0.76f, new Vector2(mpp * 2.5f), negRot, color, true);
-        //handle.DrawRectCentered(dir2 * 0.76f, new Vector2(mpp * 2.5f), negRot, color, true);
-        //handle.DrawRectCentered(dir1 * 0.88f, new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir2 * 0.88f, new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir1 * 1f,    new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir2 * 1f,    new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir1 * 1.12f, new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir2 * 1.12f, new Vector2(mpp * 1),    negRot, color, true);
-        //handle.DrawRectCentered(dir1 * 1.24f, new Vector2(mpp * 2.5f), negRot, color, true);
-        //handle.DrawRectCentered(dir2 * 1.24f, new Vector2(mpp * 2.5f), negRot, color, true);
 
         Angle ang1 = dir1.ToAngle();
         Angle ang2 = dir2.ToAngle();

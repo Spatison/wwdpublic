@@ -70,7 +70,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly ContestsSystem _contests = default!;
+    [Dependency] private readonly ContestsSystem _contests = default!; // WWDP
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -629,7 +629,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         Dirty(gun);
 
-        Angle ClampAngle(Angle ang) => Math.Clamp(ang, 0, Math.Tau);
+        Angle ClampAngle(Angle ang) => Math.Clamp(ang, 0, Math.Tau); // WWDP
     }
 
     protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null);
