@@ -1,8 +1,6 @@
 using Content.Client.Chat.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.ItemSlotPicker;
-using Content.Shared.ItemSlotPicker.UI;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -11,8 +9,10 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
 using static Robust.Client.UserInterface.Control;
 using System.Numerics;
+using Content.Shared._White.ItemSlotPicker;
+using Content.Shared._White.ItemSlotPicker.UI;
 
-namespace Content.Client.ItemSlotPicker.UI;
+namespace Content.Client._White.ItemSlotPicker.UI;
 
 // a UFO came by and left this message here
 [UsedImplicitly]
@@ -52,7 +52,7 @@ public sealed class ItemSlotPickerBoundUserInterface : BoundUserInterface
             _menu!.RemoveChild(_layer);
 
         _layer = new RadialContainer();
-        foreach (string slotID in picker.ItemSlots)
+        foreach (var slotID in picker.ItemSlots)
         {
             if (!_itemSlots.TryGetSlot(Owner, slotID, out var slot) ||
                 !slot.HasItem)
@@ -107,7 +107,7 @@ public class EntityCenteredRadialMenu : RadialMenu
     [Dependency] private readonly IEntityManager _entMan = default!;
     private readonly SharedTransformSystem _transform;
 
-    private System.Numerics.Vector2 _cachedPos;
+    private Vector2 _cachedPos;
 
     public EntityCenteredRadialMenu(EntityUid entity) : base()
     {

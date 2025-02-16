@@ -1,6 +1,6 @@
+using Content.Shared._White.ItemSlotPicker;
 using Content.Shared.Interaction;
-using Content.Shared.ItemSlotPicker;
-using Content.Shared.ItemSlotPicker.UI;
+using Content.Shared._White.ItemSlotPicker.UI;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Content.Client.ItemSlotPicker;
+namespace Content.Client._White.ItemSlotPicker;
 
 public sealed class ItemSlotPickerSystem : SharedItemSlotPickerSystem
 {

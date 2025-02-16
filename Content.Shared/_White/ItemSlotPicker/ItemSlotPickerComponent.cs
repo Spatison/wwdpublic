@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Content.Shared.ItemSlotPicker;
+namespace Content.Shared._White.ItemSlotPicker;
 
 [RegisterComponent]
 [NetworkedComponent, AutoGenerateComponentState]

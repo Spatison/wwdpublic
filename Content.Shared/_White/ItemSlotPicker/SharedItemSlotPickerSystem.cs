@@ -1,8 +1,8 @@
+using Content.Shared._White.ItemSlotPicker.UI;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
-using Content.Shared.ItemSlotPicker.UI;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
 using System;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Content.Shared.ItemSlotPicker;
+namespace Content.Shared._White.ItemSlotPicker;
 
 public abstract class SharedItemSlotPickerSystem : EntitySystem
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Content.Shared.ItemSlotPicker.UI;
+namespace Content.Shared._White.ItemSlotPicker.UI;
 
 [Serializable, NetSerializable]
 public sealed class ItemSlotPickerSlotPickedMessage(string id) : BoundUserInterfaceMessage
