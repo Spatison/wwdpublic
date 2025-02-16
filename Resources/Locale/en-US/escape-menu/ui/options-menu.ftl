@@ -66,6 +66,7 @@ ui-options-screen-shake-intensity = Screen shake intensity
 ui-options-screen-shake-percent = { TOSTRING($intensity, "P0") }
 ui-options-vsync = VSync
 ui-options-fullscreen = Fullscreen
+ui-options-pixel-snap-camera-experimental = [Experimental] Pixel-Perfect camera
 ui-options-lighting-label = Lighting Quality:
 ui-options-lighting-very-low = Very Low
 ui-options-lighting-low = Low

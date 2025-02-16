@@ -60,6 +60,7 @@ ui-options-screen-shake-intensity = Интенсивность дрожания 
 ui-options-screen-shake-percent = { TOSTRING($intensity, "P0") }
 ui-options-vsync = Вертикальная синхронизация
 ui-options-fullscreen = Полный экран
+ui-options-pixel-snap-camera-experimental = [Experimental] Pixel-Perfect камера
 ui-options-lighting-label = Качество освещения:
 ui-options-lighting-very-low = Очень низкое
 ui-options-lighting-low = Низкое
